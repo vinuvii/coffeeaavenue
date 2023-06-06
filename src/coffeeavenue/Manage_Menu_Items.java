@@ -1,0 +1,1066 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package coffeeavenue;
+
+import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Query;
+import javax.swing.table.TableRowSorter;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+/**
+ *
+ * @author DELL
+ */
+public class Manage_Menu_Items extends javax.swing.JFrame {
+
+   
+    /**
+     * Creates new form Manage_Menu_Items
+     */
+    public Manage_Menu_Items() {
+        initComponents();
+        showPanel("card2");
+    }
+     void showPanel(String cname){
+        CardLayout cl = (CardLayout)jPanel3.getLayout();
+        cl.show(jPanel3, cname);
+    }
+    void updateTable2(List itemList){
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, itemsList, jTable4);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemid}"));
+        columnBinding.setColumnName("Itemid");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemname}"));
+        columnBinding.setColumnName("Itemname");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${category}"));
+        columnBinding.setColumnName("Category");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${price}"));
+        columnBinding.setColumnName("Price");
+        columnBinding.setColumnClass(Integer.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane1.setViewportView(jTable4);
+
+    }
+    
+    void updateTable1(List itemList){
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, itemsList, jTable2);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemid}"));
+        columnBinding.setColumnName("Itemid");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemname}"));
+        columnBinding.setColumnName("Itemname");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${category}"));
+        columnBinding.setColumnName("Category");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${price}"));
+        columnBinding.setColumnName("Price");
+        columnBinding.setColumnClass(Integer.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane3.setViewportView(jTable2);
+    }
+    
+    void updateTable3(List itemList){
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, itemsList, jTable3);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemid}"));
+        columnBinding.setColumnName("Itemid");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane4.setViewportView(jTable3);
+
+    }
+
+    void clear(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText(""); 
+        jTextField9.setText("");
+        jTextField10.setText("");
+        jTextField11.setText("");
+        jTextField12.setText("");
+    }
+    
+    void update(){
+         updateTable2(itemsList);
+         updateTable1(itemsList);
+         updateTable3(itemsList);
+    }
+
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
+
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("coffeeavenue/Bundle"); // NOI18N
+        CoffeeAvenuePUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory(bundle.getString("Manage_Menu_Items.CoffeeAvenuePUEntityManager.persistenceUnit")).createEntityManager(); // NOI18N
+        itemsQuery = java.beans.Beans.isDesignTime() ? null : CoffeeAvenuePUEntityManager.createQuery(bundle.getString("Manage_Menu_Items.itemsQuery.query")); // NOI18N
+        itemsList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : itemsQuery.getResultList();
+        itemsQuery1 = java.beans.Beans.isDesignTime() ? null : CoffeeAvenuePUEntityManager.createQuery(bundle.getString("Manage_Menu_Items.itemsQuery1.query")); // NOI18N
+        itemsList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : itemsQuery1.getResultList();
+        itemsQuery2 = java.beans.Beans.isDesignTime() ? null : CoffeeAvenuePUEntityManager.createQuery(bundle.getString("Manage_Menu_Items.itemsQuery2.query")); // NOI18N
+        itemsList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : itemsQuery2.getResultList();
+        itemsQuery3 = java.beans.Beans.isDesignTime() ? null : CoffeeAvenuePUEntityManager.createQuery(bundle.getString("Manage_Menu_Items.itemsQuery3.query")); // NOI18N
+        itemsList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : itemsQuery3.getResultList();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        itemsQuery4 = java.beans.Beans.isDesignTime() ? null : CoffeeAvenuePUEntityManager.createQuery(bundle.getString("Manage_Menu_Items.itemsQuery4.query")); // NOI18N
+        itemsList4 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : itemsQuery4.getResultList();
+        itemsQuery5 = java.beans.Beans.isDesignTime() ? null : CoffeeAvenuePUEntityManager.createQuery(bundle.getString("Manage_Menu_Items.itemsQuery5.query")); // NOI18N
+        itemsList5 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : itemsQuery5.getResultList();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        jPanel2 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField14 = new javax.swing.JTextField();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jTextField13 = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1072, 655));
+
+        jPanel2.setBackground(new java.awt.Color(216, 100, 17));
+
+        jButton3.setBackground(new java.awt.Color(206, 179, 122));
+        jButton3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(153, 0, 0));
+        jButton3.setText(bundle.getString("Manage_Menu_Items.jButton3.text")); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(206, 179, 122));
+        jButton4.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(153, 0, 0));
+        jButton4.setText(bundle.getString("Manage_Menu_Items.jButton4.text")); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setBackground(new java.awt.Color(206, 179, 122));
+        jButton5.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(153, 0, 0));
+        jButton5.setText(bundle.getString("Manage_Menu_Items.jButton5.text")); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(206, 179, 122));
+        jButton8.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(153, 0, 0));
+        jButton8.setText(bundle.getString("Manage_Menu_Items.jButton8.text")); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel3.setBackground(new java.awt.Color(206, 179, 122));
+        jPanel3.setLayout(new java.awt.CardLayout());
+
+        jPanel4.setBackground(new java.awt.Color(206, 179, 122));
+        jPanel4.setForeground(new java.awt.Color(216, 100, 17));
+        jPanel4.setAutoscrolls(true);
+        jPanel4.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel2.setText(bundle.getString("Manage_Menu_Items.jLabel2.text")); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel1.setText(bundle.getString("Manage_Menu_Items.jLabel1.text")); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel3.setText(bundle.getString("Manage_Menu_Items.jLabel3.text")); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel4.setText(bundle.getString("Manage_Menu_Items.jLabel4.text")); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel5.setText(bundle.getString("Manage_Menu_Items.jLabel5.text")); // NOI18N
+
+        jTextField1.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(216, 100, 17));
+
+        jTextField2.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(216, 100, 17));
+
+        jTextField3.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(216, 100, 17));
+
+        jTextField4.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(216, 100, 17));
+
+        jTable3.setAutoCreateRowSorter(true);
+
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, itemsList1, jTable3);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemid}"));
+        columnBinding.setColumnName("Itemid");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane4.setViewportView(jTable3);
+
+        jButton1.setBackground(new java.awt.Color(216, 100, 17));
+        jButton1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(153, 0, 0));
+        jButton1.setText(bundle.getString("Manage_Menu_Items.jButton1.text")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(216, 100, 17));
+        jButton7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(153, 0, 0));
+        jButton7.setText(bundle.getString("Manage_Menu_Items.jButton7.text")); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addGap(113, 113, 113)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel2)))
+                .addContainerGap(455, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(182, 182, 182))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(297, 297, 297))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
+        );
+
+        jPanel3.add(jPanel4, "card2");
+
+        jPanel1.setBackground(new java.awt.Color(206, 179, 122));
+        jPanel1.setAutoscrolls(true);
+
+        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel6.setText(bundle.getString("Manage_Menu_Items.jLabel6.text")); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel7.setText(bundle.getString("Manage_Menu_Items.jLabel7.text")); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel8.setText(bundle.getString("Manage_Menu_Items.jLabel8.text")); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel9.setText(bundle.getString("Manage_Menu_Items.jLabel9.text")); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel10.setText(bundle.getString("Manage_Menu_Items.jLabel10.text")); // NOI18N
+
+        jTextField5.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(216, 100, 17));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable4, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.price}"), jTextField5, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jTextField6.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField6.setForeground(new java.awt.Color(216, 100, 17));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable4, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.category}"), jTextField6, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jTextField7.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField7.setForeground(new java.awt.Color(216, 100, 17));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable4, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.itemname}"), jTextField7, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jTextField8.setEditable(false);
+        jTextField8.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField8.setForeground(new java.awt.Color(216, 100, 17));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable4, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.itemid}"), jTextField8, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(216, 100, 17));
+        jButton2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(153, 0, 0));
+        jButton2.setText(bundle.getString("Manage_Menu_Items.jButton2.text")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel17.setText(bundle.getString("Manage_Menu_Items.jLabel17.text")); // NOI18N
+
+        jTextField14.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField14.setForeground(new java.awt.Color(216, 100, 17));
+        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField14ActionPerformed(evt);
+            }
+        });
+        jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField14KeyReleased(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jRadioButton3.setForeground(new java.awt.Color(216, 100, 17));
+        jRadioButton3.setText(bundle.getString("Manage_Menu_Items.jRadioButton3.text")); // NOI18N
+
+        buttonGroup1.add(jRadioButton4);
+        jRadioButton4.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jRadioButton4.setForeground(new java.awt.Color(216, 100, 17));
+        jRadioButton4.setText(bundle.getString("Manage_Menu_Items.jRadioButton4.text")); // NOI18N
+
+        jTable4.setAutoCreateRowSorter(true);
+
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, itemsList5, jTable4);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemid}"));
+        columnBinding.setColumnName("Itemid");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemname}"));
+        columnBinding.setColumnName("Itemname");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${category}"));
+        columnBinding.setColumnName("Category");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${price}"));
+        columnBinding.setColumnName("Price");
+        columnBinding.setColumnClass(Integer.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane1.setViewportView(jTable4);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jRadioButton3)
+                                .addGap(46, 46, 46)
+                                .addComponent(jRadioButton4))
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel7))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(jTextField8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(229, 229, 229))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel6)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton3)
+                            .addComponent(jRadioButton4))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel1, "card3");
+
+        jPanel5.setBackground(new java.awt.Color(206, 179, 122));
+
+        jLabel11.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel11.setText(bundle.getString("Manage_Menu_Items.jLabel11.text")); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel12.setText(bundle.getString("Manage_Menu_Items.jLabel12.text")); // NOI18N
+
+        jTextField9.setEditable(false);
+        jTextField9.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField9.setForeground(new java.awt.Color(216, 100, 17));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable2, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.itemid}"), jTextField9, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+
+        jTable2.setAutoCreateRowSorter(true);
+
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, itemsList2, jTable2);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemid}"));
+        columnBinding.setColumnName("Itemid");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemname}"));
+        columnBinding.setColumnName("Itemname");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${category}"));
+        columnBinding.setColumnName("Category");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${price}"));
+        columnBinding.setColumnName("Price");
+        columnBinding.setColumnClass(Integer.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane3.setViewportView(jTable2);
+
+        jLabel13.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel13.setText(bundle.getString("Manage_Menu_Items.jLabel13.text")); // NOI18N
+
+        jTextField10.setEditable(false);
+        jTextField10.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField10.setForeground(new java.awt.Color(216, 100, 17));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable2, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.itemname}"), jTextField10, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel14.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel14.setText(bundle.getString("Manage_Menu_Items.jLabel14.text")); // NOI18N
+
+        jTextField11.setEditable(false);
+        jTextField11.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField11.setForeground(new java.awt.Color(216, 100, 17));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable2, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.category}"), jTextField11, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel15.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel15.setText(bundle.getString("Manage_Menu_Items.jLabel15.text")); // NOI18N
+
+        jTextField12.setEditable(false);
+        jTextField12.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField12.setForeground(new java.awt.Color(216, 100, 17));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable2, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.price}"), jTextField12, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jButton6.setBackground(new java.awt.Color(216, 100, 17));
+        jButton6.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(153, 0, 0));
+        jButton6.setText(bundle.getString("Manage_Menu_Items.jButton6.text")); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(216, 100, 17));
+        jLabel16.setText(bundle.getString("Manage_Menu_Items.jLabel16.text")); // NOI18N
+
+        buttonGroup2.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(216, 100, 17));
+        jRadioButton1.setText(bundle.getString("Manage_Menu_Items.jRadioButton1.text")); // NOI18N
+
+        buttonGroup2.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(216, 100, 17));
+        jRadioButton2.setText(bundle.getString("Manage_Menu_Items.jRadioButton2.text")); // NOI18N
+
+        jTextField13.setFont(new java.awt.Font("Bell MT", 0, 20)); // NOI18N
+        jTextField13.setForeground(new java.awt.Color(216, 100, 17));
+        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField13ActionPerformed(evt);
+            }
+        });
+        jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField13KeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(jTextField9))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                                .addComponent(jLabel12)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                                .addComponent(jRadioButton1)
+                                                .addGap(38, 38, 38)
+                                                .addComponent(jRadioButton2))))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(121, 121, 121)))))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel11)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton2))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton1)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(119, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))))
+        );
+
+        jPanel3.add(jPanel5, "card4");
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        bindingGroup.bind();
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        showPanel("card2");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        showPanel("card3");
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        
+        showPanel("card4");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty() )
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information");
+        }
+        else{
+            
+        Items i = new Items();
+        i.setItemid(jTextField1.getText());
+        i.setItemname(jTextField2.getText());
+        i.setCategory(jTextField3.getText());
+        i.setPrice(Integer.parseInt(jTextField4.getText()));
+        
+        CoffeeAvenuePUEntityManager.getTransaction().begin();
+        CoffeeAvenuePUEntityManager.persist(i);
+        CoffeeAvenuePUEntityManager.getTransaction().commit();
+            
+        JOptionPane.showMessageDialog(rootPane, "Item Added");
+        itemsList.clear();
+        itemsList = itemsQuery.getResultList();
+            update();
+        clear();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        TableRowSorter<TableModel> ColSort = new TableRowSorter<>(jTable3.getModel());
+        jTable3.setRowSorter(ColSort);
+        List<RowSorter.SortKey> ColSortingKeys = new ArrayList<>();
+        int SortColNo = 0;
+        ColSortingKeys.add(new RowSorter.SortKey(SortColNo, SortOrder.DESCENDING));
+
+        ColSort.setSortKeys(ColSortingKeys);
+        ColSort.sort();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(jTextField5.getText().isEmpty() || jTextField6.getText().isEmpty() || jTextField7.getText().isEmpty() || jTextField8.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information");
+        }
+        else{
+        Items i = CoffeeAvenuePUEntityManager.find(Items.class,jTextField8.getText());
+        i.setItemname(jTextField7.getText());
+        i.setCategory(jTextField6.getText());
+        i.setPrice(Integer.parseInt(jTextField5.getText()));
+        CoffeeAvenuePUEntityManager.getTransaction().begin();
+        CoffeeAvenuePUEntityManager.merge(i);
+        CoffeeAvenuePUEntityManager.getTransaction().commit();
+        
+        JOptionPane.showMessageDialog(rootPane, "Item Updated");
+        itemsList.clear();
+        itemsList = itemsQuery.getResultList();
+        update();
+        clear();
+         }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField14ActionPerformed
+
+    private void jTextField14KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyReleased
+         if(jRadioButton3.isSelected()){
+          Query q = CoffeeAvenuePUEntityManager.createQuery("SELECT i FROM Items i WHERE i.itemname like :itemname");
+          q.setParameter("itemname", "%"+jTextField14.getText()+"%");
+          itemsList.clear();
+          itemsList= q.getResultList();
+          update();
+      }else if(jRadioButton4.isSelected()){
+           Query q = CoffeeAvenuePUEntityManager.createQuery( "SELECT i FROM Items i WHERE i.category like :category");
+          q.setParameter("category", "%"+jTextField14.getText()+"%");
+          itemsList.clear();
+          itemsList= q.getResultList();
+          update();
+      }else
+          JOptionPane.showMessageDialog(rootPane, "Select A Search Criteria","Warning",JOptionPane.INFORMATION_MESSAGE);
+      
+    }//GEN-LAST:event_jTextField14KeyReleased
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        if(jTextField9.getText().isEmpty() || jTextField10.getText().isEmpty() || jTextField11.getText().isEmpty() || jTextField12.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Missing Information");
+        }
+        else{
+        Items i = CoffeeAvenuePUEntityManager.find(Items.class,jTextField9.getText());
+       int r = JOptionPane.showConfirmDialog(rootPane, "Remove "+ i.getItemid()," Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(r==JOptionPane.YES_NO_OPTION){
+        CoffeeAvenuePUEntityManager.getTransaction().begin();
+        CoffeeAvenuePUEntityManager.remove(i);
+        CoffeeAvenuePUEntityManager.getTransaction().commit();
+        
+        JOptionPane.showMessageDialog(rootPane, "Item Record Deleted");
+        clear();
+        itemsList.clear();
+        itemsList = itemsQuery.getResultList();
+        update();
+        
+        }
+         }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField13ActionPerformed
+
+    private void jTextField13KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyReleased
+         if(jRadioButton1.isSelected()){
+          Query q = CoffeeAvenuePUEntityManager.createQuery("SELECT i FROM Items i WHERE i.itemname like :itemname");
+          q.setParameter("itemname", "%"+jTextField13.getText()+"%");
+          itemsList.clear();
+          itemsList= q.getResultList();
+          update();
+      }else if(jRadioButton2.isSelected()){
+           Query q = CoffeeAvenuePUEntityManager.createQuery( "SELECT i FROM Items i WHERE i.category like :category");
+          q.setParameter("category", "%"+jTextField13.getText()+"%");
+          itemsList.clear();
+          itemsList= q.getResultList();
+          update();
+      }else
+          JOptionPane.showMessageDialog(rootPane, "Select A Search Criteria","Warning",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jTextField13KeyReleased
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Manage_Menu_Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Manage_Menu_Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Manage_Menu_Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Manage_Menu_Items.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Manage_Menu_Items().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.persistence.EntityManager CoffeeAvenuePUEntityManager;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private java.util.List<coffeeavenue.Items> itemsList;
+    private java.util.List<coffeeavenue.Items> itemsList1;
+    private java.util.List<coffeeavenue.Items> itemsList2;
+    private java.util.List<coffeeavenue.Items> itemsList3;
+    private java.util.List<coffeeavenue.Items> itemsList4;
+    private java.util.List<coffeeavenue.Items> itemsList5;
+    private javax.persistence.Query itemsQuery;
+    private javax.persistence.Query itemsQuery1;
+    private javax.persistence.Query itemsQuery2;
+    private javax.persistence.Query itemsQuery3;
+    private javax.persistence.Query itemsQuery4;
+    private javax.persistence.Query itemsQuery5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    // End of variables declaration//GEN-END:variables
+}
